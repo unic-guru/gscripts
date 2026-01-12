@@ -63,19 +63,19 @@ function API.activateAI()
             local r = math.random(1,2)
             
             if r ~= 1 then
-                task.spawn(DBAPI.hold, Enum.KeyCode.W, math.random(50,200)/10)
+                task.spawn(API.hold, Enum.KeyCode.W, math.random(50,200)/10)
 
                 task.wait(.4)
 
-                DBAPI.hold(Enum.KeyCode.Space, .25)
-                DBAPI.hold(Enum.KeyCode.Q, .25)
+                API.hold(Enum.KeyCode.Space, .25)
+                API.hold(Enum.KeyCode.Q, .25)
             else 
-                DBAPI.hold(Enum.KeyCode.A, math.random(1,10)/10)
+                API.hold(Enum.KeyCode.A, math.random(1,10)/10)
 
                 task.wait(math.random(1,50)/10)
                 if udp ~= _udp then break end
 
-                DBAPI.hold(Enum.KeyCode.D, math.random(1,10)/10)
+                API.hold(Enum.KeyCode.D, math.random(1,10)/10)
             end
 
             task.wait(math.random(1,50)/10)
@@ -86,12 +86,12 @@ function API.activateAI()
         while udp == _udp do
             local r = math.random(1,5)
             if r == 3 or r == 4 then
-                DBAPI.hold(Enum.KeyCode.Space)
-                DBAPI.hold(Enum.KeyCode.Space)
+                API.hold(Enum.KeyCode.Space)
+                API.hold(Enum.KeyCode.Space)
             elseif r == 1 or r == 2 then
-                DBAPI.hold(Enum.KeyCode.Space)
+                API.hold(Enum.KeyCode.Space)
             else
-                DBAPI.hold(Enum.KeyCode.Space, math.random(1,50)/10)
+                API.hold(Enum.KeyCode.Space, math.random(1,50)/10)
             end
 
             task.wait(math.random(20,170)/10)
@@ -100,7 +100,7 @@ function API.activateAI()
 
     task.spawn(function()
         while udp == _udp do
-            DBAPI.hold(Enum.KeyCode.B)
+            API.hold(Enum.KeyCode.B)
 
             task.wait(math.random(100,200)/10)
         end
@@ -108,8 +108,8 @@ function API.activateAI()
 
     task.spawn(function()
         while udp == _udp do
-            DBAPI.hold(Enum.KeyCode.Space)
-            DBAPI.hold(Enum.KeyCode.Q)
+            API.hold(Enum.KeyCode.Space)
+            API.hold(Enum.KeyCode.Q)
 
             task.wait(math.random(100,200)/10)
         end
