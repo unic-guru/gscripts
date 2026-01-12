@@ -50,13 +50,7 @@ function API.getGameStateChangedSignal()
 end
 
 function API.moveToReadyZone()
-    API.move(
-        readyZone.Position + Vector3.new(
-            math.random(-10,10),
-            0,
-            math.random(-5,5)
-        )
-    )
+    API.move(readyZone.Position + Vector3.new(math.random(-10,10),0,math.random(-5,5)))
 end
 
 function API.activateAI()
