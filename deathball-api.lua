@@ -54,11 +54,11 @@ function API.moveToReadyZone()
 end
 
 function API.activateAI()
-    local _udp = udp
+    local _upd = upd
 
     --// Move
     task.spawn(function()
-        while udp == _udp do
+        while upd == _upd do
             local pos = Vector3.new()
             local r = math.random(1,2)
             
@@ -73,7 +73,7 @@ function API.activateAI()
                 API.hold(Enum.KeyCode.A, math.random(1,10)/10)
 
                 task.wait(math.random(1,50)/10)
-                if udp ~= _udp then break end
+                if upd ~= _upd then break end
 
                 API.hold(Enum.KeyCode.D, math.random(1,10)/10)
             end
@@ -83,7 +83,7 @@ function API.activateAI()
     end)
 
     task.spawn(function()
-        while udp == _udp do
+        while upd == _upd do
             local r = math.random(1,5)
             if r == 3 or r == 4 then
                 API.hold(Enum.KeyCode.Space)
@@ -99,7 +99,7 @@ function API.activateAI()
     end)
 
     task.spawn(function()
-        while udp == _udp do
+        while upd == _upd do
             API.hold(Enum.KeyCode.B)
 
             task.wait(math.random(100,200)/10)
@@ -107,7 +107,7 @@ function API.activateAI()
     end)
 
     task.spawn(function()
-        while udp == _udp do
+        while upd == _upd do
             API.hold(Enum.KeyCode.Space)
             API.hold(Enum.KeyCode.Q)
 
