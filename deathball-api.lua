@@ -8,6 +8,7 @@ local player = Players.LocalPlayer
 
 local readyZone = workspace:WaitForChild("New Lobby"):WaitForChild("ReadyArea"):WaitForChild("ReadyZone")
 local readyButton = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("HUD"):WaitForChild("HolderBottom"):WaitForChild("PlayButton")
+local upd = 0
 
 --// Methods
 function API.isPlayerReady(player)
@@ -46,6 +47,77 @@ end
 
 function API.getGameStateChangedSignal()
   return readyButton:GetPropertyChangedSignal()
+end
+
+function API.moveToReadyZone()
+    API.move(readyZone.Position)
+end
+
+function API.activateAI()
+    local _udp = udp
+
+    --// Move
+    task.spawn(function()
+        while udp == _udp do
+            local pos = Vector3.new()
+            local r = math.random(1,2)
+            
+            if r ~= 1 then
+                task.spawn(DBAPI.hold, Enum.KeyCode.W, math.random(50,200)/10)
+
+                task.wait(.4)
+
+                DBAPI.hold(Enum.KeyCode.Space, .25)
+                DBAPI.hold(Enum.KeyCode.Q, .25)
+            else 
+                DBAPI.hold(Enum.KeyCode.A, math.random(1,10)/10)
+
+                task.wait(math.random(1,50)/10)
+                if udp ~= _udp then break end
+
+                DBAPI.hold(Enum.KeyCode.D, math.random(1,10)/10)
+            end
+
+            task.wait(math.random(1,50)/10)
+        end
+    end)
+
+    task.spawn(function()
+        while udp == _udp do
+            local r = math.random(1,5)
+            if r == 3 or r == 4 then
+                DBAPI.hold(Enum.KeyCode.Space)
+                DBAPI.hold(Enum.KeyCode.Space)
+            elseif r == 1 or r == 2 then
+                DBAPI.hold(Enum.KeyCode.Space)
+            else
+                DBAPI.hold(Enum.KeyCode.Space, math.random(1,50)/10)
+            end
+
+            task.wait(math.random(20,170)/10)
+        end
+    end)
+
+    task.spawn(function()
+        while udp == _udp do
+            DBAPI.hold(Enum.KeyCode.B)
+
+            task.wait(math.random(100,200)/10)
+        end
+    end)
+
+    task.spawn(function()
+        while udp == _udp do
+            DBAPI.hold(Enum.KeyCode.Space)
+            DBAPI.hold(Enum.KeyCode.Q)
+
+            task.wait(math.random(100,200)/10)
+        end
+    end)
+end
+
+function API.deactivateAI()
+    upd += 1
 end
 
 --// Export
