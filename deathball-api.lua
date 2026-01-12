@@ -46,7 +46,7 @@ function API.hold(kc, t)
 end
 
 function API.getGameStateChangedSignal()
-  return readyButton:GetPropertyChangedSignal()
+  return readyButton:GetPropertyChangedSignal("Visible")
 end
 
 function API.moveToReadyZone()
