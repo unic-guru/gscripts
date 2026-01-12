@@ -49,8 +49,8 @@ function API.getGameStateChangedSignal()
   return readyButton:GetPropertyChangedSignal("Visible")
 end
 
-function API.moveToReadyZone()
-    API.move(readyZone.Position + Vector3.new(math.random(-10,10),0,math.random(-4,4)))
+function API.moveToReadyZone(bounce)
+    API.move(readyZone.Position + bounce)
 end
 
 function API.activateAI()
